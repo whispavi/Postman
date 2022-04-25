@@ -195,7 +195,7 @@
 							"\r",
 							"// 6. Проверить, что age в ответе равно age s request (age забрать из request.)\r",
 							"pm.test(\"Age\", function () {\r",
-							"    pm.expect(jsonData.age).to.eql(\"30\");\r",
+							"    pm.expect(jsonData.age).to.eql(reqData.age);\r",
 							"});\r",
 							"\r",
 							"// 7. Проверить, что salary в ответе равно salary s request (salary забрать из request.)\r",
@@ -291,7 +291,7 @@
 							"\r",
 							"// 6. Проверить, что age в ответе равно age из request (age забрать из request.)\r",
 							"pm.test(\"Age\", () => {\r",
-							"    pm.expect(reqData.age).to.eql(\"30\");\r",
+							"    pm.expect(jsonData.age).to.eql(+reqData.age);\r",
 							"});\r",
 							"\r",
 							"// 7. Вывести в консоль параметр salary из request.\r",
@@ -330,18 +330,22 @@
 							"//New environment -> Add -> Environment HW2 -> name/age/salary\r",
 							"\r",
 							"// 18. Передать в окружение переменную name\r",
-							"pm.environment.set(\"name\", jsonData.name);\r",
+							"pm.environment.set(\"name\", \"Vi\");\r",
 							"\r",
 							"// 19. Передать в окружение переменную age\r",
-							"pm.environment.set(\"age\", jsonData.age);\r",
+							"pm.environment.set(\"age\", 30);\r",
 							"\r",
 							"// 20. Передать в окружение переменную salary\r",
-							"pm.environment.set(\"salary\",jsonData.salary);\r",
+							"pm.environment.set(\"salary\", 1000);\r",
 							"\r",
 							"// 21. Написать цикл который выведет в консоль по порядку элементы списка из параметра salary.\r",
-							"for (i = 100; i < jsonData.salary; i++) {\r",
-							"    console.log(jsonData.salary);\r",
-							"}\r",
+							"for (i = 0; i < 3; i++) {\r",
+							"    console.log(jsonData.salary[i])\r",
+							"    console.log('-------')\r",
+							"};\r",
+							"//for (let i of jsonData.salary) {\r",
+							"//    console.log(i)\r",
+							"//};\r",
 							""
 						],
 						"type": "text/javascript"
@@ -480,8 +484,8 @@
 							"// 22. ***Написать цикл который выведет в консоль по порядку элементы списка из параметра person.\r",
 							"for (i in jsonData.person) {\r",
 							"    console.log(i,jsonData.person[i])\r",
-							"\r",
-							"}\r",
+							"    console.log('.........')\r",
+							"};\r",
 							""
 						],
 						"type": "text/javascript"
@@ -512,15 +516,10 @@
 					]
 				},
 				"url": {
-					"raw": "http://162.55.220.72:5005/user_info_2?name=Vi&age=30&salary=1000",
-					"protocol": "http",
+					"raw": "{{url}}/user_info_2?name=Vi&age=30&salary=1000",
 					"host": [
-						"162",
-						"55",
-						"220",
-						"72"
+						"{{url}}"
 					],
-					"port": "5005",
 					"path": [
 						"user_info_2"
 					],
